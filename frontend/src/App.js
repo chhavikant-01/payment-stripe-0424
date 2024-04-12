@@ -11,6 +11,10 @@ function App() {
     productBy: "FaceBook"
   })
 
+  const stripePublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
+
+
+
   const makePayment = token =>{
     const body = {
       token,
@@ -35,25 +39,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-        <a
-          className="App-link"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         <StripeCheckout
-        stripeKey={StripePublishableKey}
+      stripeKey={stripePublicKey}
         token={makePayment}
-        name='Buy React'
+        name='Buy Me a Coffee'
         amount={product.price * 100}
         shippingAddress
         billingAddress
          >
-          <button className='btn-large green'>Buy React in just ${product.price}</button>
+          <button className='btn-large green'>Buy Me a Coffee in just ${product.price}</button>
          </StripeCheckout>
       </header>
     </div>

@@ -1,6 +1,7 @@
 const cors = require("cors")
+require('dotenv').config();
 const express = require("express")
-const stripe = require("stripe")(StripeSecreteKey)
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
